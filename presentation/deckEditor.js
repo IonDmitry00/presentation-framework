@@ -1,6 +1,8 @@
 import React from 'react';
+import { Slide } from 'spectacle'
 import PreviewPanel from './previewPanel';
 import CurrentEditedSlide from './currentEditedSlide';
+import './deckEditor.css'
 
 const slidesImports = [
 	import("./SlidesContent/1"),
@@ -13,9 +15,11 @@ export default class DeckEditor extends React.Component {
 	constructor(props) {
 		super(props);
 
+		console.log("deckEditor.js");
+
 		this.state = {
 			currentSlideNumber: 0,
-			slides: Array(slidesImports.length).fill(<Slide key="loading" />)
+			slides: []
 		};
 	}
 
@@ -34,7 +38,7 @@ export default class DeckEditor extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="deckEditor">
 				<PreviewPanel 
 					slides={this.state.slides}
 				/>

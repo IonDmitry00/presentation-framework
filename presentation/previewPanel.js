@@ -1,5 +1,6 @@
 import React from 'react';
 import SlidePreview from './slidePreview';
+import './previewPanel.css'
 
 export default class PreviewPanel extends React.Component {
 	constructor(props) {
@@ -7,7 +8,8 @@ export default class PreviewPanel extends React.Component {
 	}
 
 	render() {
-		const slides = this.props.slides.map(x => (<SlidePreview>{x}</SlidePreview>));
+		const slides = this.props.slides.map((x, i) => 
+			(<SlidePreview key={i} slide={x} />));
 
 		return (
 			<div className='previewPanel'>

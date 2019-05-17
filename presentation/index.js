@@ -1,81 +1,84 @@
 import React from 'react';
-import {
-  BlockQuote,
-  Cite,
-  Deck,
-  Heading,
-  Image,
-  List,
-  ListItem,
-  Quote,
-  Slide,
-  Text
-} from 'spectacle';
-import createTheme from 'spectacle/lib/themes/default';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+// import {
+//   BlockQuote,
+//   Cite,
+//   Deck,
+//   Heading,
+//   Image,
+//   List,
+//   ListItem,
+//   Quote,
+//   Slide,
+//   Text
+// } from 'spectacle';
+// import createTheme from 'spectacle/lib/themes/default';
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
+import DeckEditor from './deckEditor';
 
-const images = {
-  formidagon: require('../assets/formidable-logo.svg'),
-  goodWork: require('../assets/good-work.gif')
-};
+// const images = {
+//   formidagon: require('../assets/formidable-logo.svg'),
+//   goodWork: require('../assets/good-work.gif')
+// };
 
-const theme = createTheme(
-  {
-    primary: 'white',
-    secondary: '#1F2022',
-    tertiary: '#03A9FC',
-    quaternary: '#CECECE'
-  },
-  {
-    primary: 'Montserrat',
-    secondary: 'Helvetica'
-  }
-);
+// const theme = createTheme(
+//   {
+//     primary: 'white',
+//     secondary: '#1F2022',
+//     tertiary: '#03A9FC',
+//     quaternary: '#CECECE'
+//   },
+//   {
+//     primary: 'Montserrat',
+//     secondary: 'Helvetica'
+//   }
+// );
 
-const slidesImports = [
-  import("./SlidesContent/1"),
-  import("./SlidesContent/2"),
-  import("./SlidesContent/3"),
-  import("./SlidesContent/4")
-];
+// const slidesImports = [
+//   import("./SlidesContent/1"),
+//   import("./SlidesContent/2"),
+//   import("./SlidesContent/3"),
+//   import("./SlidesContent/4")
+// ];
 
 export default class Presentation extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    console.log("index.js");
     // this.state = { text: '' } // You can also pass a Quill Delta here
     // this.handleChange = this.handleChange.bind(this)
-    this.state = {
-      slides: Array(slidesImports.length).fill(<Slide key="loading" />)
-    };
+    // this.state = {
+    //   slides: Array(slidesImports.length).fill(<Slide key="loading" />)
+    // };
   }
 
-  componentDidMount() {
-    const importedSlides = [];
-    Promise.all(slidesImports).then((slidesImportsResolved) => {
-      slidesImportsResolved.forEach((slide) => {
-        importedSlides.push(slide.default);
-      });
+  // componentDidMount() {
+  //   const importedSlides = [];
+  //   Promise.all(slidesImports).then((slidesImportsResolved) => {
+  //     slidesImportsResolved.forEach((slide) => {
+  //       importedSlides.push(slide.default);
+  //     });
 
-      this.setState({ slides: importedSlides });
-    });
-  }
+  //     this.setState({ slides: importedSlides });
+  //   });
+  // }
 
   // handleChange(value) {
   //   this.setState({ text: value })
   // }
 
   render() {
-    const { slides } = this.state;
-    return (
-      <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
-        {
-          slides.map((slide, index) => 
-            <Slide key={index}>{slide}</Slide>
-          )
-        }
-      </Deck>
-    );
+    // const { slides } = this.state;
+    return (<DeckEditor />);
+    // return (
+    //   <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
+    //     {
+    //       slides.map((slide, index) => 
+    //         <Slide key={index}>{slide}</Slide>
+    //       )
+    //     }
+    //   </Deck>
+    // );
   }
 
   // render() {
